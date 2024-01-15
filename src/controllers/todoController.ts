@@ -43,9 +43,13 @@ export const updateTodo = async (req: Request, res: Response) => {
       return;
     }
 
-    const updatedTodo = await Todo.findByIdAndUpdate(todoId, updatedTodoData, {
-      new: true,
-    });
+    const updatedTodo = await Todo.findByIdAndUpdate<ITodo>(
+      todoId,
+      updatedTodoData,
+      {
+        new: true,
+      }
+    );
 
     res.status(200).json({
       message: "Todo successfully updated",
